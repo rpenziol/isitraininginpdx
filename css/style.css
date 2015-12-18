@@ -1,0 +1,27 @@
+html {
+}
+
+h1 {
+  color: white;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 12em;
+  text-align: center;
+  <!-- line-height: 750%; -->
+}
+
+h2 {
+  color: white;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 8em;
+  text-align: center;
+  <!-- line-height: 750%; -->
+}
+
+#condition {
+  position:absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: table-cell; 
+  vertical-align: middle;
+}
