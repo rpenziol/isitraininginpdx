@@ -1,0 +1,6 @@
+.project
+.buildpath
+.settings
+php/api_url
+php/current_condition.txt
+php/hitcounter.txt
