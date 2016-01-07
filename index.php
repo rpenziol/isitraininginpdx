@@ -19,7 +19,7 @@
         || (strcmp($current_condition, 'Heavy Rain') == 0) || (strcmp($current_condition, 'Heavy Rain Mist') == 0)) {
       include('weather/rain.html');
 	}
-    else if (strcmp($current_condition, 'Snow') == 0) {
+    else if (strcmp($current_condition, 'Snow') == 0 || (strcmp($current_condition, 'Light Snow') == 0)) {
       include('weather/snow.html');
     }	
     else {
