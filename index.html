@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Is It Raining In PDX?</title>
+	<link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- This site contains code borrowed from CodePen user Sheepeuh. The license for this code is viewable at http://codepen.io/Sheepeuh/pen/cFazd/license -->
+
+  </head> 
+
+  <body>
+    <script type="text/javascript">
+        //AJAX request to retrieve condition
+        function getCondition()
+        {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200)
+            {
+             setCondition(this.response);
+            }
+          };
+          //Use time in URL to prevent browser from pulling cached page
+          xhttp.open("GET", "condition.json" + "?t=" + (new Date()).getTime(), true);
+          xhttp.send();
+        }
+        
+        function setCondition(response)
+        {
+            var response = JSON.parse(response);
+            var condition = response.current_observation.weather;
+            var temperature = response.current_observation.temp_f;
+            
+            //If condition has 'rain' as a substring
+            if(condition.toLowerCase().indexOf('rain') !== -1)
+            {
+                document.getElementById("is_rain").innerHTML = 'Yes';
+            }
+            else
+            {
+                document.getElementById("is_rain").innerHTML = 'No';
+            }
+        }
+        
+        //Wait for DOM to load first
+        window.onload = function()
+        {
+            //Grab condition immediately, then continue to update
+            getCondition();
+            setInterval(getCondition, 10000);
+        }
+    </script>
+    
+    <div id="is_rain"><p></p></div>
+
+  </body>
+
+</html>
