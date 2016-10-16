@@ -4,13 +4,11 @@
   $api_key = str_replace("\n", '', $api_key);
   
   while(true) {
-  	$json_string = file_get_contents($api_key); //Fetch condition information
-  	$parsed_json = json_decode($json_string);
-  	$condition = $parsed_json->{'current_observation'}->{'weather'};
+  	$condition = file_get_contents($api_key); //Fetch condition information
   
-  	$fp = fopen("current_condition.txt" , "w");
+  	$fp = fopen("../condition.json" , "w");
   	fputs($fp , $condition);
   	fclose($fp);
-        sleep(180);
+    sleep(180);
   }
 ?>

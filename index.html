@@ -3,6 +3,7 @@
     <title>Is It Raining In PDX?</title>
 	<link rel="icon" type="image/png" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<!-- This site contains code borrowed from CodePen user Sheepeuh. The license for this code is viewable at http://codepen.io/Sheepeuh/pen/cFazd/license -->
 
   </head> 
@@ -33,11 +34,18 @@
             //If condition has 'rain' as a substring
             if(condition.toLowerCase().indexOf('rain') !== -1)
             {
-                document.getElementById("is_rain").innerHTML = 'Yes';
+                document.body.style.backgroundColor = "black";
+                document.getElementById("is_rain").innerHTML = '<h1>Yes</h1>';
+            }
+            else if(condition.toLowerCase().indexOf('snow') !== -1)
+            {
+                document.body.style.backgroundColor = "#6b92b9";
+                document.getElementById("is_rain").innerHTML = '<h1>It snows here?</h1>';
             }
             else
             {
-                document.getElementById("is_rain").innerHTML = 'No';
+                document.body.style.backgroundColor = "#088da5";
+                document.getElementById("is_rain").innerHTML = '<h1>No</h1>';
             }
         }
         
@@ -46,11 +54,11 @@
         {
             //Grab condition immediately, then continue to update
             getCondition();
-            setInterval(getCondition, 10000);
+            setInterval(getCondition, 30000);
         }
     </script>
     
-    <div id="is_rain"><p></p></div>
+    <div id="is_rain"></div>
 
   </body>
 
