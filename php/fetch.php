@@ -1,12 +1,12 @@
-#!/usr/bin/php -q
+#!/usr/local/bin/php
 <?php
-  $api_key = file_get_contents("api_url");
-  $api_key = str_replace("\n", '', $api_key);
+  $api_url = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . '/api_url');
+  $api_url = str_replace("\n", '', $api_url);
   
   while(true) {
-  	$condition = file_get_contents($api_key); //Fetch condition information
+  	$condition = file_get_contents($api_url); //Fetch condition information
   
-  	$fp = fopen("../condition.json" , "w");
+  	$fp = fopen(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'condition.json' , "w");
   	fputs($fp , $condition);
   	fclose($fp);
     sleep(180);
